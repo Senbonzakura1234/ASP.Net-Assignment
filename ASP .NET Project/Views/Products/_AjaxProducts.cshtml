@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ASP.NET_Project.Models.Product>
+@{
+    Layout = null;
+}
+
+
+<table class="table" id="update-product">
+    <thead class="text-primary">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Image
+            </th>
+            <th class="text-center d-none d-sm-table-cell">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th class="d-none d-sm-table-cell">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="d-none d-xl-table-cell">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th class="text-center d-none d-xl-table-cell">
+                @Html.DisplayNameFor(model => model.InStoke)
+            </th>
+            <th class="text-center d-none d-lg-table-cell">
+                Edit
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    <b class="text-small">@Html.DisplayFor(modelItem => item.Id)</b>
+                </td>
+                <td>
+                    <img src="https://res.cloudinary.com/senbonzakura/image/upload/c_scale,w_100/v1573643062/images/product/product_qisxsg.png"
+                         style="max-height: 100%" alt="image">
+                </td>
+                <td class="text-center d-none d-sm-table-cell">
+                    <a class="badge w-100
+                                        @(item.InStoke > 10 ? "badge-success" :
+                                            item.InStoke > 5 && item.InStoke <= 10 ? "badge-warning" :
+                                                item.InStoke > 0 && item.InStoke <= 5 ? "badge-danger" : "badge-secondary")
+                                            w-100" href="@Url.Action("Details", "Products", new {id = item.Id})">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td class="d-none d-sm-table-cell">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="d-none d-xl-table-cell">
+                    $ @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td class="text-center d-none d-xl-table-cell">
+                    @Html.DisplayFor(modelItem => item.InStoke)
+                </td>
+                <td class="text-center d-none d-lg-table-cell">
+                    <a class="badge badge-warning" href="@Url.Action("Edit", "Products", new {id = item.Id})">
+                        <span class="mdi mdi-pencil-box-outline"></span>
+                    </a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

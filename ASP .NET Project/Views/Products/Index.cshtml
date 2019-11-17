@@ -1,0 +1,242 @@
+﻿@model IEnumerable<ASP.NET_Project.Models.Product>
+
+@{
+    ViewBag.Title = "Product - Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Advanced Search</h4>
+                    <p class="card-description d-sm-flex">
+                        <span class="text-muted text-small my-auto">Search Customer with filter</span>
+                        <br class="d-sm-none" />
+
+                        <button class="btn btn-sm btn-light ml-auto mr-2 mt-2 mt-sm-0" id="clearFilterProduct">
+                            Clear filter
+                        </button>
+                    </p>
+                    @using (Html.BeginForm("Index", "Products", FormMethod.Get,
+                        new { role = "search", id = "AdvanceSearchFormProduct" }))
+                    {
+                        <div class="row">
+                            <div class="col-sm-6 col-md-12 mb-md-3">
+                                <div class="form-group mb-lg-0">
+                                    <label for="advanceName">
+                                        <span class="text-small">Product Name</span>
+                                    </label>
+                                    <input id="advanceName" value="@ViewBag.advanceName" name="advanceName"
+                                           type="text" class="form-control form-control-sm" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group mb-lg-0">
+                                    <label for="advanceBrand">
+                                        <span class="text-small">Brand</span>
+                                    </label>
+                                    <select class="form-control  selectpicker form-selectpicker search-option-select" 
+                                            id="advanceBrand" name="advanceBrand">
+                                        <option>1</option>
+                                        <option>2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group mb-lg-0">
+                                    <label for="advancePriceFrom">
+                                        <span class="text-small">Price from</span>
+                                    </label>
+                                    <select class="form-control selectpicker form-selectpicker search-option-select"
+                                            id="advancePriceFrom" name="advancePriceFrom">
+                                        <option value="0">$0</option>
+                                        <option value="10">$10</option>
+                                        <option value="50">$50</option>
+                                        <option value="100">$100</option>
+                                        <option value="500">$500</option>
+                                        <option value="1000">$1000</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group mb-lg-0">
+                                    <label for="advancePriceTo">
+                                        <span class="text-small">Price to</span>
+                                    </label>
+                                    <select class="form-control selectpicker form-selectpicker search-option-select"
+                                            id="advancePriceTo" name="advancePriceTo">
+                                        <option value="0">-----</option>
+                                        <option value="10000">$10000</option>
+                                        <option value="1000">$1000</option>
+                                        <option value="500">$500</option>
+                                        <option value="100">$100</option>
+                                        <option value="50">$50</option>
+                                        <option value="10">$10</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 my-auto">
+                                <div class="form-check form-check-flat form-check-primary text-small mb-lg-0">
+                                    <label for="advanceCheck" class="form-check-label">
+                                        <input name="advanceCheck" id="advanceCheck"
+                                               type="checkbox" class="form-check-input">
+                                        Combine search
+                                    </label>
+                                    @Html.Hidden("advanceCheckValue",0, new { id = "advanceCheckValue" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mt-3 text-right">
+                                <input type="submit" class="btn btn-primary btn-sm" value="Search" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body table-responsive">
+                    <h4 class="card-title">Product</h4>
+                    <p class="card-description d-sm-flex">
+                        <span class="text-muted text-small my-auto">Click product name to see detail</span>
+                        <br class="d-sm-none" />
+
+                        <a class="btn btn-sm btn-primary ml-auto mr-2 mt-2 mt-sm-0" href="@Url.Action("Create", "Products")">
+                            Create New <span class="mdi mdi-plus-circle"></span>
+                        </a>
+                    </p>
+                    <table class="table" id="update-product">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th>
+                                    Image
+                                </th>
+                                <th class="text-center d-none d-sm-table-cell">
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th class="d-none d-sm-table-cell">
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th class="d-none d-xl-table-cell">
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th class="text-center d-none d-xl-table-cell">
+                                    @Html.DisplayNameFor(model => model.InStoke)
+                                </th>
+                                <th class="text-center d-none d-lg-table-cell">
+                                    Edit
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>
+                                        <b class="text-small">@Html.DisplayFor(modelItem => item.Id)</b>
+                                    </td>
+                                    <td>
+                                        <img src="https://res.cloudinary.com/senbonzakura/image/upload/c_scale,w_100/v1573643062/images/product/product_qisxsg.png"
+                                             style="max-height: 100%" alt="image">
+                                    </td>
+                                    <td class="text-center d-none d-sm-table-cell">
+                                        <a class="badge w-100
+                                        @(item.InStoke > 10 ? "badge-success" :
+                                            item.InStoke > 5 && item.InStoke <= 10 ? "badge-warning" :
+                                                item.InStoke > 0 && item.InStoke <= 5 ? "badge-danger" : "badge-secondary")
+                                            w-100" href="@Url.Action("Details", "Products", new {id = item.Id})">
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </a>
+                                    </td>s
+                                    <td class="d-none d-sm-table-cell">
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td class="d-none d-xl-table-cell">
+                                        $ @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td class="text-center d-none d-xl-table-cell">
+                                        @Html.DisplayFor(modelItem => item.InStoke)
+                                    </td>
+                                    <td class="text-center d-none d-lg-table-cell">
+                                        <a class="badge badge-warning" href="@Url.Action("Edit", "Products", new {id = item.Id})">
+                                            <span class="mdi mdi-pencil-box-outline"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @*<a class="btn btn-link" href="@Url.Action("Edit", "Customers", new {id = item.Id})">
+                                    <span class="mdi mdi-pencil-box-outline"></span>
+                                </a>
+                                <a class="btn btn-link" href="@Url.Action("Details", "Customers", new {id = item.Id})">
+                                    <span class="mdi mdi-file-document"></span>
+                                </a>
+                                <a class="btn btn-link" href="@Url.Action("Delete", "Customers", new {id = item.Id})">
+                                    <span class="mdi mdi-trash-can-outline"></span>
+                                </a>*@
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @*<div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Advanced Search</h4>
+                    <p class="card-description d-sm-flex">
+                        <span class="text-muted text-small my-auto">Search Customer with filter</span>
+                        <br class="d-sm-none" />
+
+                        <a class="btn btn-sm btn-light ml-auto mr-2 mt-2 mt-sm-0" href="@Url.Action("Index")">
+                            Clear filter
+                        </a>
+                    </p>
+                    @using (Html.BeginForm("Index", "Customers", FormMethod.Get,
+                        new { role = "search" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group mb-lg-0">
+                                    <label for="advanceFullname">Fullname</label>
+                                    <input id="advanceFullname" value="@ViewBag.advanceFullname" name="advanceFullname" type="text" class="form-control form-control-sm" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group mb-lg-0">
+                                    <label for="advanceEmail">Email</label>
+                                    <input id="advanceEmail" value="@ViewBag.advanceEmail" name="advanceEmail" type="text" class="form-control form-control-sm" min="0" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group mb-lg-0">
+                                    <label for="advanceAge">Age</label>
+                                    <input id="advanceAge" value="@ViewBag.advanceAge" name="advanceAge" type="number" class="form-control form-control-sm" min="0" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-check form-check-flat form-check-primary text-small mb-lg-0">
+                                    <label for="advanceCheck" class="form-check-label">
+                                        <input name="advanceCheck" id="advanceCheck"
+                                               type="checkbox" class="form-check-input">
+                                        Combine search
+                                    </label>
+                                    @Html.Hidden("advanceCheckValue", new { id = "advanceCheckValue", value = 0 })
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-2 text-right">
+                                <input type="submit" class="btn btn-primary" value="Search" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>*@
+    </div>
