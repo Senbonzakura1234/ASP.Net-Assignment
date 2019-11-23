@@ -48,8 +48,19 @@ namespace ASP.NET_Project.Controllers
             var pageNumber = (page ?? 1);
             return View(lsProducts.ToPagedList(pageNumber, pageSize));
         }
+        public JsonResult GetProductInfo(int? id)
+        {
+            var product = _db.Products.Find(id);
+            return product != null
+                ? Json(new
+                {
+                    id = product.Id,
+                    name = product.Name,
+                    quantity = 1,
+                }, JsonRequestBehavior.AllowGet)
+                : null;
+        }
 
-        
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

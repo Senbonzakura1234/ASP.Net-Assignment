@@ -37,6 +37,32 @@
         }
     });
 
+    var array = new Array();
+    if (sessionStorage.getItem("cart") != null) {
+        array.push();
+    }
+
+    $(".add-to-cart").click(function () {
+        const data = parseInt(this.id);
+        $.ajax({
+            url: "/Home/GetProductInfo",
+            type: "GET",
+            data: {
+                id: data
+            },
+            success: function (res) {
+                alert(res);
+                console.log(res);
+                array.push(res);
+                console.log(array);
+                sessionStorage.setItem("cart", array);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    });
 
     $("#clearFilterCustomer").click(function () {
         $("#advanceCheck").prop("checked", false);
@@ -108,4 +134,5 @@
         $("html, body").animate({ scrollTop: $("#goto").offset().top }, 1000);
 
     });
+
 });

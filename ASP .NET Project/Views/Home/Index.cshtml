@@ -94,20 +94,18 @@
                                         </a>
                                     </p>
                                     <div class="d-sm-flex">
-                                        <button class="btn-primary btn btn-sm mx-auto"
-                                                @{ if (item.InStoke <= 0) { @: disabled="disabled"
-                                                   } }>
-                                            @{
-                                                if (item.InStoke <= 0)
-                                                {
-                                                    <span>Out of stock</span>
-                                                }
-                                                else
-                                                {
-                                                    <span> Add to cart</span>
-                                                }
-                                            }
-                                        </button>
+                                        @if (item.InStoke <= 0)
+                                        {
+                                            <button class="btn-primary btn btn-sm mx-auto" disabled="disabled">
+                                                Add to cart
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn-primary btn btn-sm mx-auto add-to-cart" id="@item.Id">
+                                                Add to cart
+                                            </button>
+                                        }
                                     </div>
                                 </div>
                             </div>
