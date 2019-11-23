@@ -1,4 +1,4 @@
-﻿@model ASP.NET_Project.Models.Product
+﻿@model ASP.NET_Project.ViewModels.ProductEditViewModel
 
 @{
     ViewBag.Title = "Product - Create";
@@ -45,6 +45,21 @@
                         @Html.LabelFor(model => model.InStoke)
                         @Html.EditorFor(model => model.InStoke, new { htmlAttributes = new { @class = "form-control", min = 0 , placeholder = "In Stoke" } })
                         @Html.ValidationMessageFor(model => model.InStoke, "", new { @class = "text-danger text-small" })
+                    </div>
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CateId)
+                        @Html.DropDownListFor(model => model.CateId, new SelectList(Model.CategoriesList, "Id",
+                            "Name"), 
+                            new { @class = "form-control mb-2 selectpicker form-selectpicker search-option-select" })
+                        @Html.ValidationMessageFor(model => model.CateId, "", new { @class = "text-danger text-small" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BrandId)
+                        @Html.DropDownListFor(model => model.BrandId, new SelectList(Model.BrandsList, "Id",
+                            "Name"), 
+                            new { @class = "form-control mb-2 selectpicker form-selectpicker search-option-select" })
+                        @Html.ValidationMessageFor(model => model.BrandId, "", new { @class = "text-danger text-small" })
                     </div>
 
                     <input type="submit" class="btn btn-gradient-primary mr-2" value="Create" />

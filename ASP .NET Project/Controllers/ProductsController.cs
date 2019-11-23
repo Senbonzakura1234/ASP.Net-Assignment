@@ -8,7 +8,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ASP.NET_Project.Models;
+using ASP.NET_Project.ViewModels;
 using LinqKit;
+using PagedList;
 
 namespace ASP.NET_Project.Controllers
 {
@@ -17,97 +19,116 @@ namespace ASP.NET_Project.Controllers
         private readonly MyDbContext _db = new MyDbContext();
 
         // GET: Products
-        public ActionResult Index(string searchTerm, string advanceName, double? advancePriceFrom, double? advancePriceTo,
-                int? advanceCheckValue)
+        public ActionResult Index(int? advanceBrand, int? advanceCategory, string advanceName, double? advancePriceFrom, double? advancePriceTo, int? page)
         {
             var predicate = PredicateBuilder.New<Product>(true);
-
-            var products = from p in _db.Products select p;
-
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                Debug.WriteLine("okay");
-                predicate = predicate.Or(f => f.Name.Contains(searchTerm));
-                ViewBag.searchTerm = searchTerm;
-            }
-
-            if (advanceCheckValue == 0)
-            {
-                if (!string.IsNullOrEmpty(advanceName))
-                {
-                    Debug.WriteLine("okay");
-                    predicate = predicate.Or(f => f.Name.Contains(advanceName));
-                    ViewBag.advanceName = advanceName;
-                }
-
-                if (advancePriceFrom >= 0 && advancePriceTo >= 0)
-                {
-                    predicate = advancePriceTo > 0 ? 
-                        predicate.Or(f => f.Price <= advancePriceTo && f.Price >= advancePriceFrom) :
-                        predicate.Or(f =>  f.Price >= advancePriceFrom);
-                }
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(advanceName))
-                {
-                    Debug.WriteLine("okay");
-                    predicate = predicate.And(f => f.Name.Contains(advanceName));
-                    ViewBag.advanceName = advanceName;
-                }
-
-                if (advancePriceFrom >= 0 && advancePriceTo >= 0)
-                {
-                    predicate = advancePriceTo > 0 ?
-                        predicate.And(f => f.Price <= advancePriceTo && f.Price >= advancePriceFrom) :
-                        predicate.And(f => f.Price >= advancePriceFrom);
-                }
-            }
+            Debug.WriteLine(advanceBrand);
             
+
+            if (!string.IsNullOrEmpty(advanceName))
+            {
+                page = 1;
+                Debug.WriteLine("okay");
+                predicate = predicate.And(f => f.Name.Contains(advanceName));
+                ViewBag.advanceName = advanceName;
+            }
+
+
+            if (advancePriceFrom >= 0 && advancePriceTo >= 0)
+            {
+                page = 1;
+                predicate = advancePriceTo > 0 ?
+                    predicate.And(f => f.Price <= advancePriceTo && f.Price >= advancePriceFrom) :
+                    predicate.And(f => f.Price >= advancePriceFrom);
+            }
+
+            if (advanceBrand != null && advanceBrand > 0)
+            {
+                page = 1;
+                predicate = predicate.And(f => f.BrandId == advanceBrand);
+            }
+            if (advanceCategory != null && advanceCategory > 0)
+            {
+                page = 1;
+                predicate = predicate.And(f => f.CategoryId == advanceCategory);
+            }
+
+            
+
             var data = _db.Products.AsExpandable().Where(predicate);
-            return View(data);
+            var lsProducts = new List<ProductViewModel>();
+            var productViewModel = new ProductViewModel();
+            var brandsList = productViewModel.BrandsList;
+            var categoriesList = productViewModel.CategoriesList;
+            ViewBag.brandsList = brandsList;
+            ViewBag.categoriesList = categoriesList;
+            foreach (var product in data)
+            {
+                lsProducts.Add(new ProductViewModel(
+                    product.Id,
+                    product.Name,
+                    product.Description,
+                    product.Price,
+                    product.InStoke,
+                    product.CategoryId,
+                    product.BrandId,
+                    product.Picture
+                    ));
+            }
+            const int pageSize = 4;
+            var pageNumber = (page ?? 1);
+            return View(lsProducts.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult AjaxProducts(string advanceName, double? advancePriceFrom, double? advancePriceTo,
-            int? advanceCheckValue)
+        public ActionResult AjaxProducts(int? advanceBrand,int? advanceCategory, string advanceName, double? advancePriceFrom, double? advancePriceTo, int? page)
         {
             var predicate = PredicateBuilder.New<Product>(true);
-
-            if (advanceCheckValue == 0)
+            Debug.WriteLine(advanceBrand);
+            if (!string.IsNullOrEmpty(advanceName))
             {
-                if (!string.IsNullOrEmpty(advanceName))
-                {
-                    Debug.WriteLine("okay");
-                    predicate = predicate.Or(f => f.Name.Contains(advanceName));
-                    ViewBag.advanceName = advanceName;
-                }
-
-                if (advancePriceFrom >= 0 && advancePriceTo >= 0)
-                {
-                    predicate = advancePriceTo > 0 ?
-                        predicate.Or(f => f.Price <= advancePriceTo && f.Price >= advancePriceFrom) :
-                        predicate.Or(f => f.Price >= advancePriceFrom);
-                }
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(advanceName))
-                {
-                    Debug.WriteLine("okay");
-                    predicate = predicate.And(f => f.Name.Contains(advanceName));
-                    ViewBag.advanceName = advanceName;
-                }
-
-                if (advancePriceFrom >= 0 && advancePriceTo >= 0)
-                {
-                    predicate = advancePriceTo > 0 ?
-                        predicate.And(f => f.Price <= advancePriceTo && f.Price >= advancePriceFrom) :
-                        predicate.And(f => f.Price >= advancePriceFrom);
-                }
+                page = 1;
+                Debug.WriteLine("okay");
+                predicate = predicate.And(f => f.Name.Contains(advanceName));
+                ViewBag.advanceName = advanceName;
             }
 
+
+            if (advancePriceFrom >= 0 && advancePriceTo >= 0)
+            {
+                page = 1;
+                predicate = advancePriceTo > 0 ?
+                    predicate.And(f => f.Price <= advancePriceTo && f.Price >= advancePriceFrom) :
+                    predicate.And(f => f.Price >= advancePriceFrom);
+            }
+            if (advanceBrand != null && advanceBrand > 0)
+            {
+                page = 1;
+                predicate = predicate.And(f => f.BrandId == advanceBrand);
+            }
+
+            if (advanceCategory != null && advanceCategory > 0)
+            {
+                page = 1;
+                predicate = predicate.And(f => f.CategoryId == advanceCategory);
+            }
             var data = _db.Products.AsExpandable().Where(predicate);
-            return PartialView("_AjaxProducts", data);
+            var lsProducts = new List<ProductViewModel>();
+            foreach (var product in data)
+            {
+                lsProducts.Add(new ProductViewModel(
+                    product.Id,
+                    product.Name,
+                    product.Description,
+                    product.Price,
+                    product.InStoke,
+                    product.CategoryId,
+                    product.BrandId,
+                    product.Picture
+                ));
+            }
+            const int pageSize = 4;
+            var pageNumber = (page ?? 1);
+            return PartialView("_AjaxProducts", lsProducts.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Products/Details/5
@@ -122,13 +143,24 @@ namespace ASP.NET_Project.Controllers
             {
                 return HttpNotFound();
             }
-            return View(product);
+            var data = new ProductViewModel(
+                product.Id,
+                product.Name,
+                product.Description,
+                product.Price,
+                product.InStoke,
+                product.CategoryId,
+                product.BrandId,
+                product.Picture
+            );
+            return View(data);
         }
 
         // GET: Products/Create
         public ActionResult Create()
         {
-            return View();
+            var data = new ProductEditViewModel();
+            return View(data);
         }
 
         // POST: Products/Create
@@ -136,9 +168,19 @@ namespace ASP.NET_Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Price,InStoke")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Price,InStoke,CateId,BrandId,Picture")] ProductEditViewModel productEdit)
         {
-            if (!ModelState.IsValid) return View(product);
+            if (!ModelState.IsValid) return View(productEdit);
+            var product = new Product
+            {
+                Name = productEdit.Name,
+                CategoryId = productEdit.CateId,
+                BrandId = productEdit.BrandId,
+                Description = productEdit.Description,
+                InStoke = productEdit.InStoke,
+                Price = productEdit.Price,
+                Picture = productEdit.Picture
+            };
             _db.Products.Add(product);
             _db.SaveChanges();
             return RedirectToAction("Index");
@@ -157,7 +199,17 @@ namespace ASP.NET_Project.Controllers
             {
                 return HttpNotFound();
             }
-            return View(product);
+            var data = new ProductEditViewModel(
+                product.Id,
+                product.Name,
+                product.Description,
+                product.Price,
+                product.InStoke,
+                product.CategoryId,
+                product.BrandId,
+                product.Picture
+            );
+            return View(data);
         }
 
         // POST: Products/Edit/5
@@ -165,9 +217,20 @@ namespace ASP.NET_Project.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Price,InStoke")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,Price,InStoke,CateId,BrandId,Picture")] ProductEditViewModel productEdit)
         {
-            if (!ModelState.IsValid) return View(product);
+            if (!ModelState.IsValid) return View(productEdit);
+            var product = new Product
+            {
+                Id = productEdit.Id,
+                Name = productEdit.Name,
+                CategoryId = productEdit.CateId,
+                BrandId = productEdit.BrandId,
+                Description = productEdit.Description,
+                InStoke = productEdit.InStoke,
+                Price = productEdit.Price,
+                Picture = productEdit.Picture
+            };
             _db.Entry(product).State = EntityState.Modified;
             _db.SaveChanges();
             return RedirectToAction("Index");

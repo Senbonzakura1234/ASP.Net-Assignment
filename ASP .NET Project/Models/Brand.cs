@@ -19,6 +19,6 @@ namespace ASP.NET_Project.Models
         [Required(ErrorMessage = "The Description is required")]
         public string Description { get; set; }
 
-        //public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

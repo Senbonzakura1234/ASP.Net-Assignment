@@ -13418,3 +13418,35 @@ dl li {
 /* ReSharper restore Redundant */
 /* ReSharper restore Html.AttributeNotResolved */
 /* ReSharper restore InvalidValue */
+
+.paging-control ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /*background-color: #333;*/
+}
+
+.paging-control li {
+    float: left;
+    border: none;
+}
+
+
+
+.paging-control li a {
+    display: block;
+    color: Black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.paging-control li a:hover:not(.active) {
+    background-color: #b66dff;
+    color: white;
+}
+
+.paging-control .active {
+    background-color: #b66dff;
+    color: white;
+}

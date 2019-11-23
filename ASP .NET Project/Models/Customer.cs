@@ -71,5 +71,6 @@ namespace ASP.NET_Project.Models
             [Display(Name = "Disabled")]
             Disabled = 4
         }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

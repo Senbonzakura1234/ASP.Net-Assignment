@@ -53,12 +53,19 @@ C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\rosly
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Antlr3.Runtime.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\EntityFramework.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\EntityFramework.SqlServer.dll
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\LinqKit.dll
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.Owin.dll
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.Owin.Security.dll
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.Owin.Security.OAuth.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\MySql.Data.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\MySql.Data.Entity.EF6.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\MySqlConnector.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Newtonsoft.Json.dll
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Owin.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\System.Buffers.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\System.Memory.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\System.Net.Http.Formatting.dll
@@ -79,7 +86,13 @@ C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Syste
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\WebGrease.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\EntityFramework.xml
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\EntityFramework.SqlServer.xml
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\LinqKit.xml
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.Owin.xml
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.Owin.Security.xml
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\MySql.Data.xml
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\MySql.Data.Entity.EF6.xml
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\MySqlConnector.xml
@@ -106,7 +119,10 @@ C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP .NET Project.csproj.CopyComplete
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP.NET_Project.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP.NET_Project.pdb
-C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\LinqKit.dll
-C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\LinqKit.xml
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP.NET_Project.Migrations.InitialCreate.resources
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP .NET Project.csproj.GenerateResource.cache
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP.NET_Project.Migrations.AddPictureTable.resources
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\PagedList.dll
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\PagedList.Mvc.dll
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\PagedList.xml
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\PagedList.Mvc.xml

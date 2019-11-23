@@ -22,6 +22,7 @@ namespace ASP.NET_Project.Models
 
         [DisplayName("Price")]
         [Required(ErrorMessage = "The Price is required")]
+        [Range(0, double.MaxValue, ErrorMessage = "The Price cannot be less than 0")]
         public double Price { get; set; }
 
         [DisplayName("InStoke")]
@@ -29,5 +30,15 @@ namespace ASP.NET_Project.Models
         [Range(0, int.MaxValue, ErrorMessage = "The InStoke must be greater than or equal 0")]
         public int InStoke { get; set; }
 
+        [ForeignKey("Brand")]
+        public int BrandId { get; set; }
+        public virtual Brand Brand { get; set; }
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
+
+        [DisplayName("Picture")]
+        [Required(ErrorMessage = "The Picture is required")]
+        public string Picture { get; set; }
     }
 }

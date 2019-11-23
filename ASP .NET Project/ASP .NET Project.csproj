@@ -90,6 +90,12 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -195,32 +201,36 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BrandsController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MemberController.cs" />
-    <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\SongController.cs" />
-    <Compile Include="Controllers\SongsController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911151152359_InitialCreate.cs" />
-    <Compile Include="Migrations\201911151152359_InitialCreate.Designer.cs">
-      <DependentUpon>201911151152359_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201911222313056_InitialCreate.cs" />
+    <Compile Include="Migrations\201911222313056_InitialCreate.Designer.cs">
+      <DependentUpon>201911222313056_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911222357350_AddPictureTable.cs" />
+    <Compile Include="Migrations\201911222357350_AddPictureTable.Designer.cs">
+      <DependentUpon>201911222357350_AddPictureTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ASPNET_ProjectContext.cs" />
     <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MyDbContext.cs" />
-    <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Song.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ProductEditViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -232,6 +242,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\styleLandingPage.css" />
+    <Content Include="Content\css\styleLandingPage.min.css" />
     <Content Include="Content\images\dashboard\circle.png" />
     <Content Include="Content\images\dashboard\circle.svg" />
     <Content Include="Content\images\dashboard\img_1.jpg" />
@@ -279,10 +291,16 @@
     <Content Include="Content\images\sprites\jsgrid-icons.png" />
     <Content Include="Content\images\sprites\red.png" />
     <Content Include="Content\images\sprites\yellow.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\vendors\aos\css\aos.css" />
+    <Content Include="Content\vendors\aos\js\aos.js" />
     <Content Include="Content\vendors\chart.js\Chart.min.js" />
     <Content Include="Content\vendors\css\vendor.bundle.base.css" />
     <Content Include="Content\vendors\js\vendor.bundle.base.js" />
     <Content Include="Content\vendors\mdi\css\materialdesignicons.min.css" />
+    <Content Include="Content\vendors\owl-carousel\css\owl.carousel.min.css" />
+    <Content Include="Content\vendors\owl-carousel\css\owl.theme.default.css" />
+    <Content Include="Content\vendors\owl-carousel\js\owl.carousel.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -468,6 +486,7 @@
     <Content Include="Scripts\js\dashboard.js" />
     <Content Include="Scripts\js\file-upload.js" />
     <Content Include="Scripts\js\hoverable-collapse.js" />
+    <Content Include="Scripts\js\landingpage.js" />
     <Content Include="Scripts\js\misc.js" />
     <Content Include="Scripts\js\off-canvas.js" />
     <Content Include="Scripts\js\todo.js" />
@@ -496,7 +515,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\User\UserForm.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -524,11 +542,17 @@
     <Content Include="Views\Brands\Details.cshtml" />
     <Content Include="Views\Brands\Edit.cshtml" />
     <Content Include="Views\Brands\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\HomePage\Index.cshtml" />
+    <Content Include="Views\HomePage\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Member\" />
-    <Folder Include="Views\Song\" />
+    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -540,8 +564,11 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911151152359_InitialCreate.resx">
-      <DependentUpon>201911151152359_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911222313056_InitialCreate.resx">
+      <DependentUpon>201911222313056_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911222357350_AddPictureTable.resx">
+      <DependentUpon>201911222357350_AddPictureTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

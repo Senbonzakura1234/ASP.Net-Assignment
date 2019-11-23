@@ -1,4 +1,8 @@
 ﻿$(document).ready(function () {
+    //if ($("#goto").length) {
+    //    $("html, body").delay(1000).animate({ scrollTop: $("#goto").offset().top }, 1000);
+    //}
+
     // ReSharper disable once CoercedEqualsUsing
     $("#advanceCheckValue").val(0);
 
@@ -12,7 +16,7 @@
             $(`.search-form`).attr(`action`, `/Customers`);
             // ReSharper disable once CoercedEqualsUsing
         } else if (valueSelected == 1) {
-            $(`.search-form`).attr(`action`, `/Products`);
+            $(`.search-form`).attr(`action`, `/`);
         }
     });
     var searchForm = document.getElementById("search-form");
@@ -41,10 +45,14 @@
         $("input[name = 'advanceEmail']").val(null);
         $("input[name = 'advanceAge']").val(null);
     });
-    $("#clearFilterProduct").click(function () {
-        $(".form-check-label-price").prop("checked", false);
-        $(".formCheckPrice").val(0);
-    });
+    //$("#clearFilterProduct").click(function () {
+    //    $("input[name = 'advanceName']").val("");
+    //    $("select[name = 'advancePriceFrom']").val(0);
+    //    $("select[name = 'advancePriceTo']").val(0);
+    //    $("select[name = 'advanceBrand']").val(0);
+    //    $("select[name = 'advanceCategory']").val(0);
+    //    $("#form-submit-btn").click();
+    //});
 
 
     $("#AdvanceSearchFormCustomer").on("submit", function (e) {
@@ -75,17 +83,19 @@
     $("#AdvanceSearchFormProduct").on("submit", function (e) {
         e.preventDefault();
         const advanceName = $("input[name = 'advanceName']").val();
+        const advanceBrand = $("select[name = 'advanceBrand']").val();
+        const advanceCategory = $("select[name = 'advanceCategory']").val();
         const advancePriceFrom = $("select[name = 'advancePriceFrom']").val();
         const advancePriceTo = $("select[name = 'advancePriceTo']").val();
-        const advanceCheckValue = $("#advanceCheckValue").val();
         $.ajax({
             url: "/Products/AjaxProducts",
             type: "GET",
             data: {
                 advanceName: advanceName,
+                advanceBrand: advanceBrand,
+                advanceCategory: advanceCategory,
                 advancePriceFrom: advancePriceFrom,
-                advancePriceTo: advancePriceTo,
-                advanceCheckValue: advanceCheckValue
+                advancePriceTo: advancePriceTo
             },
             success: function(res) {
                 $("#update-product").html(res);
@@ -95,5 +105,7 @@
                 alert(thrownError);
             }
         });
+        $("html, body").animate({ scrollTop: $("#goto").offset().top }, 1000);
+
     });
 });

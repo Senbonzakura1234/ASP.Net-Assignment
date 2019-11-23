@@ -24,5 +24,7 @@ namespace ASP.NET_Project.Models
         public System.Data.Entity.DbSet<ASP.NET_Project.Models.Order> Orders { get; set; }
 
         public System.Data.Entity.DbSet<ASP.NET_Project.Models.Brand> Brands { get; set; }
+
+        public System.Data.Entity.DbSet<ASP.NET_Project.Models.Category> Categories { get; set; }
     }
 }

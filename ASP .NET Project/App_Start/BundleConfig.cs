@@ -8,8 +8,8 @@ namespace ASP.NET_Project
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-            //            "~/Scripts/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        "~/Scripts/jquery-{version}.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
             //            "~/Scripts/jquery.validate*"));
@@ -19,8 +19,12 @@ namespace ASP.NET_Project
             //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
             //            "~/Scripts/modernizr-*"));
 
-            //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-            //          "~/Scripts/bootstrap.js"));
+            bundles.Add(new ScriptBundle("~/bundles/popper").Include(
+                      "~/Scripts/popper.min.js", "~/Scripts/popper-utils.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/bootstrap.js"));
+
+
             // bootstrap select
             bundles.Add(new ScriptBundle("~/bundles/bootstrap-select-js").Include(
                         "~/Scripts/bootstrap-select.min.js"));
@@ -51,6 +55,10 @@ namespace ASP.NET_Project
                 "~/Content/vendors/chart.js/Chart.min.js",
                 "~/Scripts/js/off-canvas.js", "~/Scripts/js/hoverable-collapse.js",
                 "~/Scripts/js/misc.js", "~/Scripts/js/dashboard.js", "~/Scripts/js/todolist.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/root-script-home").Include(
+                "~/Content/vendors/owl-carousel/js/owl.carousel.min.js", "~/Content/vendors/aos/js/aos.js", "~/Scripts/js/landingpage.js"));
+
 
             BundleTable.EnableOptimizations = true;
         }

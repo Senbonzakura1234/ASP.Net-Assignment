@@ -1,4 +1,8 @@
-﻿@model IEnumerable<ASP.NET_Project.Models.Product>
+﻿@using System.Activities.Statements
+@using ASP.NET_Project.ViewModels
+
+@model PagedList.IPagedList<ASP.NET_Project.ViewModels.ProductViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Product - Index";
@@ -8,185 +12,187 @@
 
 
 
-    <div class="row">
-        <div class="col-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Advanced Search</h4>
-                    <p class="card-description d-sm-flex">
-                        <span class="text-muted text-small my-auto">Search Customer with filter</span>
-                        <br class="d-sm-none" />
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Advanced Search</h4>
+                <p class="card-description d-sm-flex">
+                    <span class="text-muted text-small my-auto">Search Customer with filter</span>
+                    <br class="d-sm-none" />
 
-                        <button class="btn btn-sm btn-light ml-auto mr-2 mt-2 mt-sm-0" id="clearFilterProduct">
-                            Clear filter
-                        </button>
-                    </p>
-                    @using (Html.BeginForm("Index", "Products", FormMethod.Get,
-                        new { role = "search", id = "AdvanceSearchFormProduct" }))
-                    {
-                        <div class="row">
-                            <div class="col-sm-6 col-md-12 mb-md-3">
-                                <div class="form-group mb-lg-0">
-                                    <label for="advanceName">
-                                        <span class="text-small">Product Name</span>
-                                    </label>
-                                    <input id="advanceName" value="@ViewBag.advanceName" name="advanceName"
-                                           type="text" class="form-control form-control-sm" />
-                                </div>
+                    <a href="@Url.Action("Index")" class="btn btn-sm btn-light ml-auto mr-2 mt-2 mt-sm-0" id="clearFilterProduct">
+                        Clear filter
+                    </a>
+                </p>
+                @using (Html.BeginForm("Index", "Products", FormMethod.Get,
+                    new { role = "search", id = "AdvanceSearchFormProduct" }))
+                {
+                    <div class="row">
+                        <div class="col-sm-6 col-md-12 mb-md-3">
+                            <div class="form-group mb-lg-0">
+                                <label for="advanceName">
+                                    <span class="text-small">Product Name</span>
+                                </label>
+                                <input id="advanceName" value="@ViewBag.advanceName" name="advanceName"
+                                       type="text" class="form-control form-control-sm" />
                             </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="form-group mb-lg-0">
-                                    <label for="advanceBrand">
-                                        <span class="text-small">Brand</span>
-                                    </label>
-                                    <select class="form-control  selectpicker form-selectpicker search-option-select" 
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="form-group mb-lg-0">
+                                @* ReSharper disable once Html.IdNotResolved *@
+                                <label for="advanceBrand">
+                                    <span class="text-small">Brand</span>
+                                </label>
+                                @*<select class="form-control  selectpicker form-selectpicker search-option-select"
                                             id="advanceBrand" name="advanceBrand">
-                                        <option>1</option>
-                                        <option>2</option>
-                                    </select>
-                                </div>
+                                    </select>*@
+                                @Html.DropDownList("advanceBrand", new SelectList(ViewBag.brandsList, "Id", "Name"), "---Select---",
+                                    new { @class = "form-control  selectpicker form-selectpicker search-option-select", id = "advanceBrand" })
                             </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="form-group mb-lg-0">
-                                    <label for="advancePriceFrom">
-                                        <span class="text-small">Price from</span>
-                                    </label>
-                                    <select class="form-control selectpicker form-selectpicker search-option-select"
-                                            id="advancePriceFrom" name="advancePriceFrom">
-                                        <option value="0">$0</option>
-                                        <option value="10">$10</option>
-                                        <option value="50">$50</option>
-                                        <option value="100">$100</option>
-                                        <option value="500">$500</option>
-                                        <option value="1000">$1000</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="form-group mb-lg-0">
+                                @* ReSharper disable once Html.IdNotResolved *@
+                                <label for="advanceCategory">
+                                    <span class="text-small">Category</span>
+                                </label>
+                                @*<select class="form-control  selectpicker form-selectpicker search-option-select"
+                                            id="advanceBrand" name="advanceBrand">
+                                    </select>*@
+                                @Html.DropDownList("advanceCategory", new SelectList(ViewBag.categoriesList, "Id", "Name"), "---Select---",
+                                    new { @class = "form-control  selectpicker form-selectpicker search-option-select", id = "advanceCategory" })
                             </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="form-group mb-lg-0">
-                                    <label for="advancePriceTo">
-                                        <span class="text-small">Price to</span>
-                                    </label>
-                                    <select class="form-control selectpicker form-selectpicker search-option-select"
-                                            id="advancePriceTo" name="advancePriceTo">
-                                        <option value="0">-----</option>
-                                        <option value="10000">$10000</option>
-                                        <option value="1000">$1000</option>
-                                        <option value="500">$500</option>
-                                        <option value="100">$100</option>
-                                        <option value="50">$50</option>
-                                        <option value="10">$10</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group mb-lg-0">
+                                <label for="advancePriceFrom">
+                                    <span class="text-small">Price from</span>
+                                </label>
+                                <select class="form-control selectpicker form-selectpicker search-option-select"
+                                        id="advancePriceFrom" name="advancePriceFrom">
+                                    <option value="0">$0</option>
+                                    <option value="10">$10</option>
+                                    <option value="40">$40</option>
+                                    <option value="70">$70</option>
+                                    <option value="100">$100</option>
+                                    <option value="500">$500</option>
+                                </select>
                             </div>
-                            <div class="col-sm-6 my-auto">
-                                <div class="form-check form-check-flat form-check-primary text-small mb-lg-0">
-                                    <label for="advanceCheck" class="form-check-label">
-                                        <input name="advanceCheck" id="advanceCheck"
-                                               type="checkbox" class="form-check-input">
-                                        Combine search
-                                    </label>
-                                    @Html.Hidden("advanceCheckValue",0, new { id = "advanceCheckValue" })
-                                </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group mb-lg-0">
+                                <label for="advancePriceTo">
+                                    <span class="text-small">Price to</span>
+                                </label>
+                                <select class="form-control selectpicker form-selectpicker search-option-select"
+                                        id="advancePriceTo" name="advancePriceTo">
+                                    <option value="0">- No Limit -</option>
+                                    <option value="500">$500</option>
+                                    <option value="400">$400</option>
+                                    <option value="200">$200</option>
+                                    <option value="100">$100</option>
+                                    <option value="50">$50</option>
+                                    <option value="10">$10</option>
+                                </select>
                             </div>
-                            <div class="col-sm-6 mt-3 text-right">
-                                <input type="submit" class="btn btn-primary btn-sm" value="Search" />
+                        </div>
+                        <div class="d-none">
+                            <div class="form-check form-check-flat form-check-primary text-small mb-lg-0">
+                                <label for="advanceCheck" class="form-check-label">
+                                    <input name="advanceCheck" id="advanceCheck"
+                                           type="checkbox" class="form-check-input">
+                                    Combine search
+                                </label>
+                                @Html.Hidden("advanceCheckValue", 0, new { id = "advanceCheckValue" })
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mt-3 text-right">
+                            <input type="submit" class="btn btn-primary btn-sm" value="Search" id="form-submit-btn" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-12 grid-margin stretch-card" id="goto">
+        <div class="card">
+            <div class="card-body" id="update-product">
+                <h4 class="card-title">Product</h4>
+                <p class="card-description d-sm-flex">
+                    <span class="text-muted text-small my-auto">Click product name to see detail</span>
+                    <br class="d-sm-none" />
+
+                    @*<a class="btn btn-sm btn-primary ml-auto mr-2 mt-2 mt-sm-0" href="@Url.Action("Create", "Products")">
+                            Create New <span class="mdi mdi-plus-circle"></span>
+                        </a>*@
+                </p>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-6 col-lg-5 mx-lg-auto mx-xl-0 col-xl-3 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-img-top text-center pt-3">
+                                    <img src="@item.Picture"
+                                         style="max-width: 100%; max-height: 180px; padding: 4px;" alt="Product" />
+                                </div>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title text-center">
+                                        <a class="text-dark" href="@Url.Action("Details", "Products", new {id = item.Id})">
+                                            <b>
+                                                @Html.DisplayFor(model => item.Name)
+                                            </b>
+                                        </a>
+                                    </h5>
+                                    <h4 class="text-primary font-weight-bold text-center">
+                                        $ @Html.DisplayFor(model => item.Price)
+                                    </h4>
+                                    <hr />
+                                    <p class="card-text text-center">
+                                        <a class="text-decoration-none text-dark text-small" href="/Products?advanceBrand=@Html.DisplayFor(model => item.BrandId)">
+                                            <b>@Html.DisplayFor(model => item.BrandName)</b>
+                                        </a>
+                                        -
+                                        <a class="text-decoration-none text-dark text-small text-muted" href="/Products?advanceCategory=@Html.DisplayFor(model => item.CateId)">
+                                            @Html.DisplayFor(model => item.CateName)
+                                        </a>
+                                    </p>
+                                    <div class="d-sm-flex">
+                                        <button class="btn-primary btn btn-sm mx-auto"
+                                                @{ if (item.InStoke <= 0) { @: disabled="disabled"
+                                                } }>
+                                            @{
+                                                if (item.InStoke <= 0)
+                                                {
+                                                    <span>Out of stock</span>
+                                                }
+                                                else
+                                                {
+                                                    <span> Add to cart</span>
+                                                }
+                                            }
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     }
                 </div>
-            </div>
-        </div>
-        <div class="col-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body table-responsive">
-                    <h4 class="card-title">Product</h4>
-                    <p class="card-description d-sm-flex">
-                        <span class="text-muted text-small my-auto">Click product name to see detail</span>
-                        <br class="d-sm-none" />
-
-                        <a class="btn btn-sm btn-primary ml-auto mr-2 mt-2 mt-sm-0" href="@Url.Action("Create", "Products")">
-                            Create New <span class="mdi mdi-plus-circle"></span>
-                        </a>
-                    </p>
-                    <table class="table" id="update-product">
-                        <thead class="text-primary">
-                            <tr>
-                                <th>
-                                    #
-                                </th>
-                                <th>
-                                    Image
-                                </th>
-                                <th class="text-center d-none d-sm-table-cell">
-                                    @Html.DisplayNameFor(model => model.Name)
-                                </th>
-                                <th class="d-none d-sm-table-cell">
-                                    @Html.DisplayNameFor(model => model.Description)
-                                </th>
-                                <th class="d-none d-xl-table-cell">
-                                    @Html.DisplayNameFor(model => model.Price)
-                                </th>
-                                <th class="text-center d-none d-xl-table-cell">
-                                    @Html.DisplayNameFor(model => model.InStoke)
-                                </th>
-                                <th class="text-center d-none d-lg-table-cell">
-                                    Edit
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-
-                                <tr>
-                                    <td>
-                                        <b class="text-small">@Html.DisplayFor(modelItem => item.Id)</b>
-                                    </td>
-                                    <td>
-                                        <img src="https://res.cloudinary.com/senbonzakura/image/upload/c_scale,w_100/v1573643062/images/product/product_qisxsg.png"
-                                             style="max-height: 100%" alt="image">
-                                    </td>
-                                    <td class="text-center d-none d-sm-table-cell">
-                                        <a class="badge w-100
-                                        @(item.InStoke > 10 ? "badge-success" :
-                                            item.InStoke > 5 && item.InStoke <= 10 ? "badge-warning" :
-                                                item.InStoke > 0 && item.InStoke <= 5 ? "badge-danger" : "badge-secondary")
-                                            w-100" href="@Url.Action("Details", "Products", new {id = item.Id})">
-                                            @Html.DisplayFor(modelItem => item.Name)
-                                        </a>
-                                    </td>s
-                                    <td class="d-none d-sm-table-cell">
-                                        @Html.DisplayFor(modelItem => item.Description)
-                                    </td>
-                                    <td class="d-none d-xl-table-cell">
-                                        $ @Html.DisplayFor(modelItem => item.Price)
-                                    </td>
-                                    <td class="text-center d-none d-xl-table-cell">
-                                        @Html.DisplayFor(modelItem => item.InStoke)
-                                    </td>
-                                    <td class="text-center d-none d-lg-table-cell">
-                                        <a class="badge badge-warning" href="@Url.Action("Edit", "Products", new {id = item.Id})">
-                                            <span class="mdi mdi-pencil-box-outline"></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                @*<a class="btn btn-link" href="@Url.Action("Edit", "Customers", new {id = item.Id})">
-                                    <span class="mdi mdi-pencil-box-outline"></span>
-                                </a>
-                                <a class="btn btn-link" href="@Url.Action("Details", "Customers", new {id = item.Id})">
-                                    <span class="mdi mdi-file-document"></span>
-                                </a>
-                                <a class="btn btn-link" href="@Url.Action("Delete", "Customers", new {id = item.Id})">
-                                    <span class="mdi mdi-trash-can-outline"></span>
-                                </a>*@
-                            }
-                        </tbody>
-                    </table>
+                <div class="row">
+                    <div class="col mx-auto text-center">
+                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    </div>
+                </div>
+                <div class="row paging-control mt-2">
+                    <div class="mx-auto text-center">
+                        @Html.PagedListPager(Model, page => Url.Action("Index",
+                            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                    </div>
                 </div>
             </div>
         </div>
-        @*<div class="col-12 grid-margin stretch-card">
+    </div>
+    @*<div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Advanced Search</h4>
@@ -239,4 +245,4 @@
                 </div>
             </div>
         </div>*@
-    </div>
+</div>
