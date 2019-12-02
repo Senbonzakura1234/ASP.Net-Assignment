@@ -19,6 +19,7 @@ namespace ASP.NET_Project.Controllers
         private readonly MyDbContext _db = new MyDbContext();
 
         // GET: Products
+        [HandleError]
         public ActionResult Index(int? advanceBrand, int? advanceCategory, string advanceName, double? advancePriceFrom, double? advancePriceTo, int? page)
         {
             var predicate = PredicateBuilder.New<Product>(true);

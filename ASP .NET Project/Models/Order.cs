@@ -16,24 +16,51 @@ namespace ASP.NET_Project.Models
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
 
-        [DisplayName("Status")]
-        [Required(ErrorMessage = "Status is required")]
-        [Range(0, 4, ErrorMessage = "Error Status field")]
+
+
+        public PaymentTypeEnum PaymentTypeId { get; set; }
+        public double TotalPrice { get; set; }
+        public string ShipName { get; set; }
+        public string ShipAddress { get; set; }
+        public string ShipPhone { get; set; }
+
+        public long CreatedAt { get; set; }
+        public long UpdatedAt { get; set; }
+        public long DeletedAt { get; set; }
+
+
         public OrderStatusEnum OrderStatus { get; set; }
         public enum OrderStatusEnum
         {
-            [Display(Name = "Selecting")]
-            Selecting = 0,
-            [Display(Name = "Aborted")]
-            Aborted = 1,
-            [Display(Name = "Checkout")]
-            Checkout = 2,
-            [Display(Name = "Delivering")]
-            Delivering = 3,
-            [Display(Name = "Received")]
-            Received = 4,
-            [Display(Name = "Refunded")]
-            Refunded = 5,
+            [Display(Name = "Pending")]
+            Pending = 5,
+            [Display(Name = "Confirm")]
+            Confirm = 4,
+            [Display(Name = "Shipping")]
+            Shipping = 3,
+            [Display(Name = "Paid")]
+            Paid = 2,
+            [Display(Name = "Cancel")]
+            Cancel = 0,
+            [Display(Name = "Done")]
+            Done = 1,
+            [Display(Name = "Deleted")]
+            Deleted = -1,
+        }
+        public enum PaymentTypeEnum
+        {
+            [Display(Name = "Cod")]
+            Cod = 1,
+            [Display(Name = "InternetBanking")]
+            InternetBanking = 2,
+            [Display(Name = "DirectTransfer")]
+            DirectTransfer = 3
+        }
+        public Order()
+        {
+            CreatedAt = DateTime.Now.Ticks;
+            UpdatedAt = DateTime.Now.Ticks;
+            OrderStatus = OrderStatusEnum.Pending;
         }
     }
 }

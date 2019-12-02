@@ -119,10 +119,9 @@ C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP .NET Project.csproj.CopyComplete
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP.NET_Project.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP.NET_Project.pdb
-C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP.NET_Project.Migrations.InitialCreate.resources
-C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP .NET Project.csproj.GenerateResource.cache
-C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP.NET_Project.Migrations.AddPictureTable.resources
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\PagedList.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\PagedList.Mvc.dll
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\PagedList.xml
 C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\bin\PagedList.Mvc.xml
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP.NET_Project.Migrations.Initial.resources
+C:\Users\Aspire A315-51\source\repos\ASP .NET Project\ASP .NET Project\obj\Debug\ASP .NET Project.csproj.GenerateResource.cache

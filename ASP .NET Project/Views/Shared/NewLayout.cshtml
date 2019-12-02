@@ -1,204 +1,429 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<!doctype html>
+<html class="no-js" lang="zxx">
 <head>
-    <title>Simple landing page</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @Styles.Render("~/Content/vendors/owl-carousel/css/owl.carousel.min.css")
-    @Styles.Render("~/Content/vendors/owl-carousel/css/owl.theme.default.css")
-    @Styles.Render("~/Content/vendors/mdi/css/materialdesignicons.min.css")
-    @Styles.Render("~/Content/vendors/aos/css/aos.css")
-    @Styles.Render("~/Content/css/styleLandingPage.css")
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Home | Bookshop Responsive Bootstrap4 Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="https://res.cloudinary.com/senbonzakura/image/upload/v1574860479/images/ImagePlaceHolder/favicon_bemdjr.ico">
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/senbonzakura/image/upload/v1574860479/images/ImagePlaceHolder/icon_zpj2gk.png">
+
+    <!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/HomePage/plugins.css")
+    @Styles.Render("~/Content/HomePage/style.css")
+
+
+    <!-- custom css -->
+    @Styles.Render("~/Content/HomePage/custom.css")
+
+    <!-- Modernizer js -->
+</head>
+<body>
+    <!--[if lte IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+    <!-- Main wrapper -->
+    <div class="wrapper" id="wrapper">
+        <!-- Header -->
+        <header id="wn__header" class="header__area header__absolute sticky__header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-6 col-lg-2">
+                        <div class="logo">
+                            @* ReSharper disable Html.IdNotResolved *@
+                            <a href="#/">
+                                <img src="https://res.cloudinary.com/senbonzakura/image/upload/v1574860464/images/ImagePlaceHolder/logo/logo_zlvcsk.png" alt="logo images">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 d-none d-lg-block">
+                        <nav class="mainmenu__nav">
+                            <ul class="meninmenu d-flex justify-content-start">
+                                <li class="drop with--one--item"><a href="#/">Home</a></li>
+                                <li class="drop">
+                                    <a href="#/">Shop</a>
+                                    <div class="megamenu mega03">
+                                        <ul class="item item03">
+                                            <li class="title">Shop Layout</li>
+                                            <li><a href="#/">Shop Grid</a></li>
+                                            <li><a href="#/">Single Product</a></li>
+                                        </ul>
+                                        <ul class="item item03">
+                                            <li class="title">Shop Page</li>
+                                            <li><a href="#/">My Account</a></li>
+                                            <li><a href="#/">Cart Page</a></li>
+                                            <li><a href="#/">Checkout Page</a></li>
+                                            <li><a href="#/">Wishlist Page</a></li>
+                                            <li><a href="#/">404 Page</a></li>
+                                            <li><a href="#/">Faq Page</a></li>
+                                        </ul>
+                                        <ul class="item item03">
+                                            <li class="title">Bargain Books</li>
+                                            <li><a href="#/">Bargain Bestsellers</a></li>
+                                            <li><a href="#/">Activity Kits</a></li>
+                                            <li><a href="#/">B & N Classics</a></li>
+                                            <li><a href="#/">Books Under $5</a></li>
+                                            <li><a href="#/">Bargain Books</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="drop">
+                                    <a href="#/">Books</a>
+                                    <div class="megamenu mega03">
+                                        <ul class="item item03">
+                                            <li class="title">Categories</li>
+                                            <li><a href="#/">Biography </a></li>
+                                            <li><a href="#/">Business </a></li>
+                                            <li><a href="#/">Cookbooks </a></li>
+                                            <li><a href="#/">Health & Fitness </a></li>
+                                            <li><a href="#/">History </a></li>
+                                        </ul>
+                                        <ul class="item item03">
+                                            <li class="title">Customer Favourite</li>
+                                            <li><a href="#/">Mystery</a></li>
+                                            <li><a href="#/">Religion & Inspiration</a></li>
+                                            <li><a href="#/">Romance</a></li>
+                                            <li><a href="#/">Fiction/Fantasy</a></li>
+                                            <li><a href="#/">Sleeveless</a></li>
+                                        </ul>
+                                        <ul class="item item03">
+                                            <li class="title">Collections</li>
+                                            <li><a href="#/">Science </a></li>
+                                            <li><a href="#/">Fiction/Fantasy</a></li>
+                                            <li><a href="#/">Self-Improvemen</a></li>
+                                            <li><a href="#/">Home & Garden</a></li>
+                                            <li><a href="#/">Humor Books</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="drop">
+                                    <a href="#/">Kids</a>
+                                    <div class="megamenu mega02">
+                                        <ul class="item item02">
+                                            <li class="title">Top Collections</li>
+                                            <li><a href="#/">American Girl</a></li>
+                                            <li><a href="#/">Diary Wimpy Kid</a></li>
+                                            <li><a href="#/">Finding Dory</a></li>
+                                            <li><a href="#/">Harry Potter</a></li>
+                                            <li><a href="#/">Land of Stories</a></li>
+                                        </ul>
+                                        <ul class="item item02">
+                                            <li class="title">More For Kids</li>
+                                            <li><a href="#/">B & N Educators</a></li>
+                                            <li><a href="#/">B & N Kids' Club</a></li>
+                                            <li><a href="#/">Kids' Music</a></li>
+                                            <li><a href="#/">Toys & Games</a></li>
+                                            <li><a href="#/">Hoodies</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="drop">
+                                    <a href="#/">Pages</a>
+                                    <div class="megamenu dropdown">
+                                        <ul class="item item01">
+                                            <li><a href="#/">About Page</a></li>
+                                            <li class="label2">
+                                                <a href="#/">Portfolio</a>
+                                                <ul>
+                                                    <li><a href="#/">Portfolio</a></li>
+                                                    <li><a href="#/">Portfolio Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#/">My Account</a></li>
+                                            <li><a href="#/">Cart Page</a></li>
+                                            <li><a href="#/">Checkout Page</a></li>
+                                            <li><a href="#/">Wishlist Page</a></li>
+                                            <li><a href="#/">404 Page</a></li>
+                                            <li><a href="#/">Faq Page</a></li>
+                                            <li><a href="#/">Team Page</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="drop">
+                                    <a href="#/">Blog</a>
+                                    <div class="megamenu dropdown">
+                                        <ul class="item item01">
+                                            <li><a href="#/">Blog Page</a></li>
+                                            <li><a href="#/">Blog Details</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a href="#/">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-6 col-lg-2">
+                        <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
+                            <li class="shop_search"><a class="search__active" href="#/"></a></li>
+                            <li class="wishlist"><a href="#/"></a></li>
+                            <li class="shopcart">
+                                <a class="cartbox_active" href="#/"><span class="product_qun total-count"></span></a>
+                                <!-- Start Shopping Cart -->
+                                <div class="block-minicart minicart__active">
+                                    <div class="minicart-content-wrapper">
+                                        <div class="micart__close">
+                                            <span>close</span>
+                                        </div>
+                                        <div class="items-total d-flex justify-content-between">
+                                            <span class="total-count"></span>
+                                            <span>Cart Subtotal</span>
+                                        </div>
+                                        <div class="total_amount text-right">
+                                            <span>$<span class="total-cart"></span></span>
+                                        </div>
+                                        <div class="mini_action checkout">
+                                            <a class="checkout__btn createOrder" href="#/">Go to Checkout</a>
+                                        </div>
+                                        <div class="single__items">
+                                            <div class="miniproduct show-cart">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="mini_action cart">
+                                            <a class="cart__btn" href="#/">View and edit cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Shopping Cart -->
+                            </li>
+                            <li class="setting__bar__icon">
+                                <a class="setting__active" href="#/"></a>
+                                <div class="searchbar__content setting__block">
+                                    <div class="content-inner">
+                                        <div class="switcher-currency">
+                                            <strong class="label switcher-label">
+                                                <span>Currency</span>
+                                            </strong>
+                                            <div class="switcher-options">
+                                                <div class="switcher-currency-trigger">
+                                                    <span class="currency-trigger">USD - US Dollar</span>
+                                                    <ul class="switcher-dropdown">
+                                                        <li>GBP - British Pound Sterling</li>
+                                                        <li>EUR - Euro</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="switcher-currency">
+                                            <strong class="label switcher-label">
+                                                <span>Language</span>
+                                            </strong>
+                                            <div class="switcher-options">
+                                                <div class="switcher-currency-trigger">
+                                                    <span class="currency-trigger">English01</span>
+                                                    <ul class="switcher-dropdown">
+                                                        <li>English02</li>
+                                                        <li>English03</li>
+                                                        <li>English04</li>
+                                                        <li>English05</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="switcher-currency">
+                                            <strong class="label switcher-label">
+                                                <span>Select Store</span>
+                                            </strong>
+                                            <div class="switcher-options">
+                                                <div class="switcher-currency-trigger">
+                                                    <span class="currency-trigger">Fashion Store</span>
+                                                    <ul class="switcher-dropdown">
+                                                        <li>Furniture</li>
+                                                        <li>Shoes</li>
+                                                        <li>Speaker Store</li>
+                                                        <li>Furniture</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="switcher-currency">
+                                            <strong class="label switcher-label">
+                                                <span>My Account</span>
+                                            </strong>
+                                            <div class="switcher-options">
+                                                <div class="switcher-currency-trigger">
+                                                    <div class="setting__menu">
+                                                        <span><a href="#/">Compare Product</a></span>
+                                                        <span><a href="#/">My Account</a></span>
+                                                        <span><a href="#/">My Wishlist</a></span>
+                                                        <span><a href="#/">Sign In</a></span>
+                                                        <span><a href="#/">Create An Account</a></span>
+                                                        <span><a href="@Url.Action("Index", "DashBoard")">To DashBoard</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Start Mobile Menu -->
+                <div class="row d-none">
+                    <div class="col-lg-12 d-none">
+                        <nav class="mobilemenu__nav">
+                            <ul class="meninmenu">
+                                <li><a href="#/">Home</a></li>
+                                <li>
+                                    <a href="#/">Pages</a>
+                                    <ul>
+                                        <li><a href="#/">About Page</a></li>
+                                        <li>
+                                            <a href="#/">Portfolio</a>
+                                            <ul>
+                                                <li><a href="#/">Portfolio</a></li>
+                                                <li><a href="#/">Portfolio Details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#/">My Account</a></li>
+                                        <li><a href="#/">Cart Page</a></li>
+                                        <li><a href="#/">Checkout Page</a></li>
+                                        <li><a href="#/">Wishlist Page</a></li>
+                                        <li><a href="#/">404 Page</a></li>
+                                        <li><a href="#/">Faq Page</a></li>
+                                        <li><a href="#/">Team Page</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#/">Shop</a>
+                                    <ul>
+                                        <li><a href="#/">Shop Grid</a></li>
+                                        <li><a href="#/">Single Product</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#/">Blog</a>
+                                    <ul>
+                                        <li><a href="#/">Blog Page</a></li>
+                                        <li><a href="#/">Blog Details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#/">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <!-- End Mobile Menu -->
+                <div class="mobile-menu d-block d-lg-none">
+                </div>
+                <!-- Mobile Menu -->
+            </div>
+        </header>
+        <!-- //Header -->
+        @RenderBody()
+        <!-- Start Search Popup -->
+        <div class="brown--color box-search-content search_active block-bg close__top">
+            <form id="search_mini_form" class="minisearch" action="#">
+                <div class="field__search">
+                    <input type="text" placeholder="Search entire store here...">
+                    <div class="action">
+                        <a href="#/"><i class="zmdi zmdi-search"></i></a>
+                    </div>
+                </div>
+            </form>
+            <div class="close__wrap">
+                <span>close</span>
+            </div>
+        </div>
+        <!-- End Search Popup -->
+        
+        <!-- Footer Area -->
+        <footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
+            <div class="footer-static-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="footer__widget footer__menu">
+                                <div class="ft__logo">
+                                    <a href="#/">
+                                        <img src="https://res.cloudinary.com/senbonzakura/image/upload/v1574860464/images/ImagePlaceHolder/logo/3_hkug8o.png" alt="logo">
+                                    </a>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered dusk alteration variations of passages</p>
+                                </div>
+                                <div class="footer__content">
+                                    <ul class="social__net social__net--2 d-flex justify-content-center">
+                                        <li><a href="#/"><i class="bi bi-facebook"></i></a></li>
+                                        <li><a href="#/"><i class="bi bi-google"></i></a></li>
+                                        <li><a href="#/"><i class="bi bi-twitter"></i></a></li>
+                                        <li><a href="#/"><i class="bi bi-linkedin"></i></a></li>
+                                        <li><a href="#/"><i class="bi bi-youtube"></i></a></li>
+                                    </ul>
+                                    <ul class="mainmenu d-flex justify-content-center">
+                                        <li><a href="#/">Trending</a></li>
+                                        <li><a href="#/">Best Seller</a></li>
+                                        <li><a href="#/">All Product</a></li>
+                                        <li><a href="#/">Wishlist</a></li>
+                                        <li><a href="#/">Blog</a></li>
+                                        <li><a href="#/">Contact</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright__wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="copyright">
+                                <div class="copy__right__inner text-left">
+                                    <p>Copyright <i class="fa fa-copyright"></i> <a href="https://freethemescloud.com/">Free themes Cloud.</a> All Rights Reserved</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="payment text-right">
+                                <img src="https://res.cloudinary.com/senbonzakura/image/upload/v1574860461/images/ImagePlaceHolder/icons/payment_xyr9mh.png" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- //Footer Area -->
+        <!-- QUICK VIEW PRODUCT -->
+        <div id="quickview-wrapper">
+            <!-- Modal -->
+            <div class="modal fade" id="productmodal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal__container" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header modal__header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-product" id="update-quick-view">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END QUICK VIEW PRODUCT -->
+    </div>
+    <!-- //Main wrapper -->
+    <!-- JS Files -->
+    @Scripts.Render("~/bundles/jquery")
     <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
 
-    @Styles.Render("~/Content/bootstrap-select.css")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/HomePage/plugins.js")
+    @Scripts.Render("~/Scripts/HomePage/active.js")
+    @Scripts.Render("~/Scripts/HomePage/main.js")
 
-</head>
-<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
-    <header id="header-section">
-        <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
-            <div class="container">
-                <div class="navbar-brand-wrapper d-flex w-100">
-                    <img src="https://res.cloudinary.com/senbonzakura/image/upload/v1574344224/images/LandingPage/Group2_rizanm.svg" alt="">
-                    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="mdi mdi-menu navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
-                    <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
-                        <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
-                            <div class="navbar-collapse-logo">
-                                <img src="https://res.cloudinary.com/senbonzakura/image/upload/v1574344224/images/LandingPage/Group2_rizanm.svg" alt="">
-                            </div>
-                            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#header-section">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#features-section">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#digital-marketing-section">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#feedback-section">Testimonials</a>
-                        </li>
-                        <li class="nav-item btn-contact-us pl-4 pl-lg-0">
-                            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Contact Us</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="banner">
-        <div class="container">
-            <h1 class="font-weight-semibold">Search engine optimisation &<br>Marketing.</h1>
-            <h6 class="font-weight-normal text-muted pb-3">Simple is a simple template with a creative design that solves all your marketing and SEO queries.</h6>
-            @*<div>
-                <button class="btn btn-opacity-light mr-1">Get started</button>
-                <button class="btn btn-opacity-success ml-1">Learn more</button>
-            </div>
-            <img src="https://res.cloudinary.com/senbonzakura/image/upload/v1574344222/images/LandingPage/Group171_jouszd.svg" alt="" class="img-fluid">*@
-        <div class="row">
-            <div class="col-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        @using (Html.BeginForm("Search", "HomePage", FormMethod.Get,
-                            new { role = "search", id = "AdvanceSearchFormProduct" }))
-                        {
-                            <div class="row">
-                                <div class="col-sm-6 col-md-12 mb-md-3">
-                                    <div class="form-group mb-lg-0">
-                                        <input id="advanceName" value="@ViewBag.advanceName" name="advanceName"
-                                               type="text" class="form-control" aria-label="Name"/>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="form-group mb-lg-0">
-                                        @* ReSharper disable once Html.IdNotResolved *@
-                                        @*<select class="form-control  selectpicker form-selectpicker search-option-select"
-                                        id="advanceBrand" name="advanceBrand">
-                                </select>*@
-                                        @Html.DropDownList("advanceBrand", new SelectList(ViewBag.brandsList, "Id", "Name"),
-                                            new { @class = "form-control  selectpicker form-selectpicker search-option-select", id = "advanceBrand"})
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="form-group mb-lg-0">
-                                        <select class="form-control selectpicker form-selectpicker search-option-select"
-                                                id="advancePriceFrom" name="advancePriceFrom" aria-label="Price from">
-                                            <option value="0">$0</option>
-                                            <option value="10">$10</option>
-                                            <option value="50">$50</option>
-                                            <option value="100">$100</option>
-                                            <option value="500">$500</option>
-                                            <option value="1000">$1000</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="form-group mb-lg-0">
-                                        <select class="form-control selectpicker form-selectpicker search-option-select"
-                                                id="advancePriceTo" name="advancePriceTo"  aria-label="Price to">
-                                            <option value="0">-----</option>
-                                            <option value="10000">$10000</option>
-                                            <option value="1000">$1000</option>
-                                            <option value="500">$500</option>
-                                            <option value="100">$100</option>
-                                            <option value="50">$50</option>
-                                            <option value="10">$10</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 my-auto text-left">
-                                    <div class="form-check form-check-flat form-check-primary text-small mb-lg-0">
-                                        <label for="advanceCheck" class="form-check-label">
-                                            <input name="advanceCheck" id="advanceCheck"
-                                                   type="checkbox" class="form-check-input">
-                                            Combine search
-                                        </label>
-                                        @Html.Hidden("advanceCheckValue", 0, new { id = "advanceCheckValue" })
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 mt-3 text-right">
-                                    <input type="submit" class="btn btn-primary btn-sm" value="Search" />
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="content-wrapper">
-        <div class="container">
-            @RenderBody()
-            <section class="contact-us" id="contact-section">
-                <div class="contact-us-bgimage grid-margin">
-                    <div class="pb-4">
-                        <h4 class="px-3 px-md-0 m-0" data-aos="fade-down">Do you have any projects?</h4>
-                        <h4 class="pt-1" data-aos="fade-down">Contact us</h4>
-                    </div>
-                    <div data-aos="fade-up">
-                        <button class="btn btn-rounded btn-outline-danger">Contact us</button>
-                    </div>
-                </div>
-            </section>
-            <section class="contact-details" id="contact-details-section">
-                <div class="row text-center text-md-left">
-                    <div class="col-12 col-md-6 col-lg-3 grid-margin">
-                        <img src="https://res.cloudinary.com/senbonzakura/image/upload/v1574344224/images/LandingPage/Group2_rizanm.svg" alt="" class="pb-2">
-                        <div class="pt-2">
-                            <p class="text-muted m-0">mikayla_beer@feil.name</p>
-                            <p class="text-muted m-0">906-179-8309</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 grid-margin">
-                        <h5 class="pb-2">Get in Touch</h5>
-                        <p class="text-muted">Don’t miss any updates of our new templates and extensions.!</p>
-                        <form>
-                            <input type="text" class="form-control" id="Email" placeholder="Email id">
-                        </form>
-                        <div class="pt-3">
-                            <button class="btn btn-dark">Subscribe</button>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 grid-margin">
-                        <h5 class="pb-2">Our Guidelines</h5>
-                        <a href="#"><p class="m-0 pb-2">Terms</p></a>
-                        <a href="#"><p class="m-0 pt-1 pb-2">Privacy policy</p></a>
-                        <a href="#"><p class="m-0 pt-1 pb-2">Cookie Policy</p></a>
-                        <a href="#"><p class="m-0 pt-1">Discover</p></a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 grid-margin">
-                        <h5 class="pb-2">Our address</h5>
-                        <p class="text-muted">518 Schmeler Neck<br>Bartlett. Illinois</p>
-                        <div class="d-flex justify-content-center justify-content-md-start">
-                            <a href="#"><span class="mdi mdi-facebook"></span></a>
-                            <a href="#"><span class="mdi mdi-twitter"></span></a>
-                            <a href="#"><span class="mdi mdi-instagram"></span></a>
-                            <a href="#"><span class="mdi mdi-linkedin"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <footer class="border-top">
-                <p class="text-center text-muted pt-4">Copyright © 2019<a href="https://www.bootstrapdash.com/" class="px-1">Bootstrapdash.</a>All rights reserved.</p>
-            </footer>
-            <!-- Modal for Contact - us Button -->
-        </div>
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/root-script-home")
 
-    @Scripts.Render("~/bundles/bootstrap-select-js")
+
 
 </body>
 </html>

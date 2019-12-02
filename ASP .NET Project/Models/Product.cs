@@ -31,22 +31,20 @@ namespace ASP.NET_Project.Models
         [Range(0, int.MaxValue, ErrorMessage = "The InStoke must be greater than or equal 0")]
         public int InStoke { get; set; }
 
-        [JsonIgnore]
         [ForeignKey("Brand")]
         public int BrandId { get; set; }
 
-        [JsonIgnore]
         public virtual Brand Brand { get; set; }
 
-        [JsonIgnore]
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
 
-        [JsonIgnore]
         public virtual Category Category { get; set; }
 
         [DisplayName("Picture")]
         [Required(ErrorMessage = "The Picture is required")]
         public string Picture { get; set; }
+
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

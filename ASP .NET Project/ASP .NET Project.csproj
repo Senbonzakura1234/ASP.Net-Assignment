@@ -204,19 +204,18 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\DashBoardController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HomePageController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911222313056_InitialCreate.cs" />
-    <Compile Include="Migrations\201911222313056_InitialCreate.Designer.cs">
-      <DependentUpon>201911222313056_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911222357350_AddPictureTable.cs" />
-    <Compile Include="Migrations\201911222357350_AddPictureTable.Designer.cs">
-      <DependentUpon>201911222357350_AddPictureTable.cs</DependentUpon>
+    <Compile Include="Migrations\201911291343152_Initial.cs" />
+    <Compile Include="Migrations\201911291343152_Initial.Designer.cs">
+      <DependentUpon>201911291343152_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ASPNET_ProjectContext.cs" />
@@ -242,8 +241,31 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\style.css" />
-    <Content Include="Content\css\styleLandingPage.css" />
-    <Content Include="Content\css\styleLandingPage.min.css" />
+    <Content Include="Content\fonts\bicon.svg" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Content\fonts\slick.svg" />
+    <Content Include="Content\HomePage\bootstrap.min.css" />
+    <Content Include="Content\HomePage\custom.css" />
+    <Content Include="Content\HomePage\plugins.css" />
+    <Content Include="Content\HomePage\plugins\animation.css" />
+    <Content Include="Content\HomePage\plugins\bicon.min.css" />
+    <Content Include="Content\HomePage\plugins\fakeloader.css" />
+    <Content Include="Content\HomePage\plugins\fancybox.css" />
+    <Content Include="Content\HomePage\plugins\font-awesome.min.css" />
+    <Content Include="Content\HomePage\plugins\fotorama.css" />
+    <Content Include="Content\HomePage\plugins\jquery-ui.min.css" />
+    <Content Include="Content\HomePage\plugins\lightbox.css" />
+    <Content Include="Content\HomePage\plugins\mainmenu.css" />
+    <Content Include="Content\HomePage\plugins\material-design-iconic-font.min.css" />
+    <Content Include="Content\HomePage\plugins\nivo-preview-2.css" />
+    <Content Include="Content\HomePage\plugins\nivo-slider.css" />
+    <Content Include="Content\HomePage\plugins\owl.carousel.min.css" />
+    <Content Include="Content\HomePage\plugins\owl.theme.default.min.css" />
+    <Content Include="Content\HomePage\plugins\pe-icon-7-stroke.css" />
+    <Content Include="Content\HomePage\plugins\simple-line-icons.css" />
+    <Content Include="Content\HomePage\plugins\slick.min.css" />
+    <Content Include="Content\HomePage\style.css" />
     <Content Include="Content\images\dashboard\circle.png" />
     <Content Include="Content\images\dashboard\circle.svg" />
     <Content Include="Content\images\dashboard\img_1.jpg" />
@@ -328,6 +350,9 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\HomePage\active.js" />
+    <Content Include="Scripts\HomePage\main.js" />
+    <Content Include="Scripts\HomePage\plugins.js" />
     <Content Include="Scripts\i18n\defaults-am_ET.js" />
     <Content Include="Scripts\i18n\defaults-am_ET.min.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
@@ -467,6 +492,23 @@
     <Content Include="Content\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
     <Content Include="Content\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
     <Content Include="Content\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Content\fonts\bicon.eot" />
+    <Content Include="Content\fonts\bicon.ttf" />
+    <Content Include="Content\fonts\bicon.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont-1.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\fonts\Simple-Line-Icons.eot" />
+    <Content Include="Content\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Content\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Content\fonts\Simple-Line-Icons.woff2" />
+    <Content Include="Content\fonts\slick-1.eot" />
+    <Content Include="Content\fonts\slick.eot" />
+    <Content Include="Content\fonts\slick.ttf" />
+    <Content Include="Content\fonts\slick.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\i18n\defaults-zh_TW.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -547,12 +589,22 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\HomePage\Index.cshtml" />
-    <Content Include="Views\HomePage\Search.cshtml" />
+    <Content Include="Views\Shared\_CartAjax.cshtml" />
+    <Content Include="Views\DashBoard\Index.cshtml" />
+    <Content Include="Views\Home\_AjaxQuickView.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cart\" />
+    <Folder Include="Views\ShoppingCart\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -564,11 +616,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911222313056_InitialCreate.resx">
-      <DependentUpon>201911222313056_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911222357350_AddPictureTable.resx">
-      <DependentUpon>201911222357350_AddPictureTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911291343152_Initial.resx">
+      <DependentUpon>201911291343152_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

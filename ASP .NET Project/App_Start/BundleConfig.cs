@@ -41,12 +41,7 @@ namespace ASP.NET_Project
 
 
             //new layout
-            //bundles.Add(new StyleBundle("~/Content/root-css1").Include(
-            //            "~/Content/vendors/mdi/css/materialdesignicons.min.css"));
-            //bundles.Add(new StyleBundle("~/Content/root-css2").Include(
-            //            "~/Content/vendors/css/vendor.bundle.base.css"));
-            //bundles.Add(new StyleBundle("~/Content/root-css2").Include(
-            //            "~/Content/css/style.css"));
+
 
 
 

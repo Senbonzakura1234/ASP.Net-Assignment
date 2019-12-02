@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ASP.NET_Project.Models;
@@ -15,9 +16,9 @@ namespace ASP.NET_Project.Controllers
     {
         private readonly MyDbContext _db = new MyDbContext();
 
+        [HandleError]
         public ActionResult Index(string searchTerm,  int? page)
         {
-            
             var predicate = PredicateBuilder.New<Product>(true);
             if (!string.IsNullOrEmpty(searchTerm))
             {
@@ -44,23 +45,49 @@ namespace ASP.NET_Project.Controllers
                     product.Picture
                 ));
             }
-            const int pageSize = 4;
-            var pageNumber = (page ?? 1);
-            return View(lsProducts.ToPagedList(pageNumber, pageSize));
+            //const int pageSize = 4;
+            //var pageNumber = (page ?? 1); .ToPagedList(pageNumber, pageSize)
+            return View(lsProducts);
         }
+
         public JsonResult GetProductInfo(int? id)
         {
+            if (id == null)
+            {
+                return null;
+            }
             var product = _db.Products.Find(id);
             return product != null
                 ? Json(new
                 {
                     id = product.Id,
                     name = product.Name,
-                    quantity = 1,
+                    price = product.Price,
+                    picture = product.Picture
                 }, JsonRequestBehavior.AllowGet)
                 : null;
         }
 
+        public ActionResult QuickView(int? id)
+        {
+            if (id == null)
+            {
+                return null;
+            }
+            var product = _db.Products.Find(id);
+            if (product == null) return null;
+            var data = new ProductViewModel(
+                product.Id,
+                product.Name,
+                product.Description,
+                product.Price,
+                product.InStoke,
+                product.CategoryId,
+                product.BrandId,
+                product.Picture
+            );
+            return View("_AjaxQuickView", data);
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

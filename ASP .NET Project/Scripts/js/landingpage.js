@@ -82,4 +82,4 @@ $("#navbarSupportedContent").on("shown.bs.collapse",
       $("body").removeClass("sidebar-open");
       $("#navbarSupportedContent").removeClass("show");
     }
-  }
+  };
